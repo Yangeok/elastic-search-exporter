@@ -1,19 +1,17 @@
 #!/bin/bash
 
-sh update.sh
-
 echo ""
 echo "----------------------------------------------------------------------"
 echo "                   <ELASTIC SEARCH CSV EXPORTER>"
 echo "----------------------------------------------------------------------"
 echo ""
-echo -n "> Index name: "
+echo -n "> index name: "
 read INDEX_NAME
 echo ""
-echo -n "> Start date: "
+echo -n "> start date: "
 read START_DATE
 echo ""
-echo -n "> End date: "
+echo -n "> end date: "
 read END_DATE
 
 echo ""

@@ -7,7 +7,6 @@ const { INDEX_NAME, START_DATE, END_DATE } = process.env;
 const indexName = INDEX_NAME;
 const startDate = START_DATE;
 const endDate = END_DATE;
-console.log({ indexName, startDate, endDate });
 
 const join = (dir, output, filename) =>
   require("path").join(dir, output, filename);
