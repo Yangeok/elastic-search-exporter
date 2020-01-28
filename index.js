@@ -3,10 +3,11 @@ const moment = require("moment");
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://elastic.work543.com:9200" });
 
-const { INDEX_NAME, START_DATE, END_DATE } = process.env;
+const { INDEX_NAME, START_DATE, END_DATE, KEYWORD } = process.env;
 const indexName = INDEX_NAME;
 const startDate = START_DATE;
 const endDate = END_DATE;
+const keyword = KEYWORD;
 
 const join = (dir, output, filename) =>
   require("path").join(dir, output, filename);
@@ -46,17 +47,25 @@ const model = async () => {
   const validator = [];
   const responseQueue = [];
 
+  console.log({ keyword });
   const result = await client.search({
     index: indexName,
     scroll: "30s",
     size: 100,
     body: {
       query: {
-        range: {
-          date: {
-            gte: startDate,
-            lte: endDate
-          }
+        bool: {
+          must: [
+            keyword !== "" ? { match: { keyword } } : "",
+            {
+              range: {
+                date: {
+                  gte: startDate,
+                  lte: endDate
+                }
+              }
+            }
+          ]
         }
       }
     }

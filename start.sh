@@ -13,7 +13,11 @@ read START_DATE
 echo ""
 echo -n "> end date: "
 read END_DATE
+echo ""
+echo -n "> keyword: "
+read KEYWORD
+
 
 echo ""
 echo "> Starting csv file extraction..."
-INDEX_NAME=$INDEX_NAME START_DATE=$START_DATE END_DATE=$END_DATE node index.js
+INDEX_NAME=$INDEX_NAME START_DATE=$START_DATE END_DATE=$END_DATE KEYWORD=$KEYWORD node index.js
