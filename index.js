@@ -9,6 +9,12 @@ const startDate = START_DATE;
 const endDate = END_DATE;
 const keyword = KEYWORD;
 
+const getLog = val => {
+  if (val !== "") {
+    console.log({ val });
+  }
+};
+
 const join = (dir, output, filename) =>
   require("path").join(dir, output, filename);
 
@@ -47,7 +53,8 @@ const model = async () => {
   const validator = [];
   const responseQueue = [];
 
-  console.log({ keyword });
+  getLog(keyword);
+
   const result = await client.search({
     index: indexName,
     scroll: "30s",
